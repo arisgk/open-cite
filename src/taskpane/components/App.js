@@ -33,7 +33,7 @@ export default class App extends React.Component {
   }
 
   click = async () => {
-    return Word.run(async context => {
+    return Word.run(async (context) => {
       /**
        * Insert your Word code here
        */
