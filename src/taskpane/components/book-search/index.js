@@ -18,7 +18,9 @@ const BookSearch = () => {
 
     const jsonRes = await res.json();
 
-    setResults(jsonRes.items.slice(0, 5));
+    // TODO: Use app-defined models and perform mapping here
+
+    setResults(jsonRes.items.slice(0, 10));
   };
 
   useEffect(() => {
@@ -27,6 +29,8 @@ const BookSearch = () => {
       return undefined;
     }
 
+    // TODO: Use throttle here
+    // Example: https://material-ui.com/components/autocomplete/#google-maps-place
     performSearch(input);
   }, [input]);
 
