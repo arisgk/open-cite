@@ -14,16 +14,23 @@ const SearchResults = ({ results }) => {
   return (
     <ol className={classes.list}>
       {results.map((result) => (
-        <li key={result.id}>
-          {/* <img
-            src={result.volumeInfo.imageLinks.smallThumbnail}
-            className={classes.image}
-          /> */}
-          <div>
-            <p>{result.volumeInfo.title}</p>
-            {/* {result.volumeInfo && result.volumeInfo.authors && (
-              <p>{result.volumeInfo.authors.link(', ')}</p>
-            )} */}
+        <li key={result.id} className={classes.itemContainer}>
+          {result &&
+            result.volumeInfo &&
+            result.volumeInfo.imageLinks &&
+            result.volumeInfo.imageLinks.smallThumbnail && (
+              <img
+                src={result.volumeInfo.imageLinks.smallThumbnail}
+                className={classes.image}
+              />
+            )}
+          <div className={classes.infoContainer}>
+            <p className={classes.title}>{result.volumeInfo.title}</p>
+            {result && result.volumeInfo && result.volumeInfo.authors && (
+              <p className={classes.author}>
+                {result.volumeInfo.authors.join(', ')}
+              </p>
+            )}
           </div>
         </li>
       ))}
