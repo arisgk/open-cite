@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { Button, ButtonType } from 'office-ui-fabric-react';
-import Header from './Header';
-import HeroList, { HeroListItem } from './HeroList';
+import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
+import { Label } from 'office-ui-fabric-react/lib/Label';
+import BookSearch from './book-search';
 import Progress from './Progress';
-/* global Button Header, HeroList, HeroListItem, Progress, Word */
 
 export default class App extends React.Component {
   constructor(props, context) {
@@ -65,28 +64,27 @@ export default class App extends React.Component {
     }
 
     return (
-      <div className="ms-welcome">
-        <Header
-          logo="assets/logo-filled.png"
-          title={this.props.title}
-          message="Welcome"
-        />
-        <HeroList
-          message="Discover what Office Add-ins can do for you today!"
-          items={this.state.listItems}
-        >
-          <p className="ms-font-l">
-            Modify the source files, then click <b>Run</b>.
-          </p>
-          <Button
-            className="ms-welcome__action"
-            buttonType={ButtonType.hero}
-            iconProps={{ iconName: 'ChevronRight' }}
-            onClick={this.click}
+      <div>
+        <Pivot aria-label="Add-in Navigation">
+          <PivotItem
+            headerText="Search"
+            headerButtonProps={{
+              'data-order': 1,
+              'data-title': 'Search',
+            }}
           >
-            Run
-          </Button>
-        </HeroList>
+            <BookSearch />
+          </PivotItem>
+          <PivotItem
+            headerText="Library"
+            headerButtonProps={{
+              'data-order': 2,
+              'data-title': 'Library',
+            }}
+          >
+            <Label>Library</Label>
+          </PivotItem>
+        </Pivot>
       </div>
     );
   }
