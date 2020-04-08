@@ -15,11 +15,23 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "import/prefer-default-export": 0
   },
   "settings": {
     "react": {
       "version": "detect"
+    },
+    // Disable errors from relative paths
+    "import/resolver": {
+      "babel-module": {
+        "alias": {
+          "src": "./src",
+          "shared": "./src/shared",
+          "models": "./src/shared/models",
+          "services": "./src/shared/services"
+        }
+      }
     }
   }
 }

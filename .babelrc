@@ -2,6 +2,18 @@
   "presets": ["@babel/preset-env", "@babel/preset-react"],
   "plugins": [
     "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-proposal-optional-chaining"
+    "@babel/plugin-proposal-optional-chaining",
+    [
+      "module-resolver", // Using Babel module resolver instead of Webpack aliases so that it's also available on tests.
+      {
+        "alias": {
+          "src": "./src",
+          "shared": "./src/shared",
+          "models": "./src/shared/models",
+          "services": "./src/shared/services"
+        },
+        "root": ["./"]
+      }
+    ]
   ]
 }

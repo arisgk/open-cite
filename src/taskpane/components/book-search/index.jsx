@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { createUseStyles } from 'react-jss';
+import { search as searchBooks } from 'services/books';
 import Results from './results';
 import styles from './styles';
 
@@ -12,15 +13,8 @@ const BookSearch = () => {
   const [results, setResults] = useState([]);
 
   const performSearch = async query => {
-    const res = await fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=${query}`,
-    );
-
-    const jsonRes = await res.json();
-
-    // TODO: Use app-defined models and perform mapping here
-
-    setResults(jsonRes.items.slice(0, 10));
+    const res = await searchBooks(query, 10);
+    setResults(res);
   };
 
   useEffect(() => {
