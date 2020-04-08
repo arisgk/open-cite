@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { throttle } from 'lodash';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { createUseStyles } from 'react-jss';
 import { search as searchBooks } from 'services/books';
@@ -12,20 +13,32 @@ const BookSearch = () => {
   const [input, setInput] = useState('');
   const [results, setResults] = useState([]);
 
-  const performSearch = async query => {
-    const res = await searchBooks(query, 10);
-    setResults(res);
-  };
+  const throttledSearch = useRef(
+    throttle(query => searchBooks(query, 10), 200),
+  );
 
+  // Based on:
+  // -- https://codesandbox.io/s/jvvkoo8pq3 (code from official React documentation)
+  // -- https://stackoverflow.com/questions/54666401/how-to-use-throttle-or-debounce-with-react-hook
   useEffect(() => {
-    if (input === '') {
+    if (!input) {
       setResults([]);
       return undefined;
     }
 
-    // TODO: Use throttle here
-    // Example: https://material-ui.com/components/autocomplete/#google-maps-place
-    performSearch(input);
+    let ignore = false;
+
+    const performThrottledSearch = async () => {
+      const res = await throttledSearch.current(input);
+      if (!ignore) setResults(res);
+    };
+
+    performThrottledSearch();
+
+    return () => {
+      ignore = true;
+      throttledSearch.current.cancel();
+    };
   }, [input]);
 
   const handleChange = (_, newValue) => setInput(newValue);

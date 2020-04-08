@@ -10,7 +10,7 @@ const ListItem = ({ book }) => {
   const classes = useStyles();
 
   return (
-    <li className={classes.container}>
+    <div className={classes.container}>
       {book?.imageLinks?.smallThumbnail && (
         <div className={classes.imageContainer}>
           <img
@@ -31,7 +31,7 @@ const ListItem = ({ book }) => {
           <p className={classes.infoItem}>{formatPublicationInfo(book)}</p>
         )}
       </div>
-    </li>
+    </div>
   );
 };
 
