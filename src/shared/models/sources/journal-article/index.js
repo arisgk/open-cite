@@ -12,6 +12,7 @@ export default class JournalArticle extends Source {
     volume,
     issue,
     pageCount,
+    language,
   }) {
     super({ id, title, subtitle, authors, yearPublished, industryIdentifiers });
 
@@ -19,5 +20,6 @@ export default class JournalArticle extends Source {
     this.volume = volume;
     this.issue = issue;
     this.pageCount = pageCount;
+    this.language = language;
   }
 }

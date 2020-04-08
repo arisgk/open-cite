@@ -11,11 +11,13 @@ export default class Book extends Source {
     publisher,
     pageCount,
     imageLinks,
+    language,
   }) {
     super({ id, title, subtitle, authors, yearPublished, industryIdentifiers });
 
     this.publisher = publisher;
     this.pageCount = pageCount;
     this.imageLinks = imageLinks;
+    this.language = language;
   }
 }

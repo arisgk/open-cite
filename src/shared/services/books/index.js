@@ -1,4 +1,8 @@
 /* global fetch */
+import { toBook } from './mappers';
+
+const defaultLimit = 10;
+
 export const search = async (query, limit) => {
   const res = await fetch(
     `https://www.googleapis.com/books/v1/volumes?q=${query}`,
@@ -6,7 +10,7 @@ export const search = async (query, limit) => {
 
   const jsonRes = await res.json();
 
-  // TODO: Use app-defined models and perform mapping here
+  const books = jsonRes.items?.map(toBook).filter(book => !!book) || [];
 
-  return jsonRes.items.slice(0, limit || 10);
+  return books.slice(0, limit || defaultLimit);
 };

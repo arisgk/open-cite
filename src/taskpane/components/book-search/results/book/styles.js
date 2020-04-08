@@ -4,18 +4,16 @@ export default () => ({
     alignItems: 'center',
     marginBottom: 24,
   },
-  title: {
+  infoItem: {
     marginTop: 0,
-    fontWeight: 'bold',
     marginBottom: 8,
   },
-  author: {
-    marginTop: 0,
-    marginBottom: 0,
+  title: {
+    fontWeight: 'bold',
   },
   imageContainer: {
     flex: 'none',
-    width: 48,
+    width: 52,
     marginRight: 16,
   },
   image: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
-import ListItem from './list-item';
+import Book from './book';
 import styles from './styles';
 
 const useStyles = createUseStyles(styles);
@@ -16,7 +16,7 @@ const SearchResults = ({ results }) => {
     <ol className={classes.list}>
       {results.map(result => (
         <li key={result.id}>
-          <ListItem item={result} />
+          <Book book={result} />
         </li>
       ))}
     </ol>
