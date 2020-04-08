@@ -1,5 +1,6 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
+import ListItem from './list-item';
 import styles from './styles';
 
 const useStyles = createUseStyles(styles);
@@ -14,21 +15,8 @@ const SearchResults = ({ results }) => {
   return (
     <ol className={classes.list}>
       {results.map(result => (
-        <li key={result.id} className={classes.itemContainer}>
-          {result?.volumeInfo?.imageLinks?.smallThumbnail && (
-            <img
-              src={result.volumeInfo.imageLinks.smallThumbnail}
-              className={classes.image}
-            />
-          )}
-          <div className={classes.infoContainer}>
-            <p className={classes.title}>{result.volumeInfo.title}</p>
-            {result?.volumeInfo?.authors && (
-              <p className={classes.author}>
-                {result.volumeInfo.authors.join(', ')}
-              </p>
-            )}
-          </div>
+        <li key={result.id}>
+          <ListItem item={result} />
         </li>
       ))}
     </ol>
