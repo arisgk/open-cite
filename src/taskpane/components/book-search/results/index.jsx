@@ -13,7 +13,7 @@ const SearchResults = ({ results }) => {
 
   return (
     <ol className={classes.list}>
-      {results.map((result) => (
+      {results.map(result => (
         <li key={result.id} className={classes.itemContainer}>
           {result &&
             result.volumeInfo &&

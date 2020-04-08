@@ -11,7 +11,7 @@ const BookSearch = () => {
   const [input, setInput] = useState('');
   const [results, setResults] = useState([]);
 
-  const performSearch = async (query) => {
+  const performSearch = async query => {
     const res = await fetch(
       `https://www.googleapis.com/books/v1/volumes?q=${query}`,
     );
