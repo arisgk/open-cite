@@ -6,11 +6,11 @@ import styles from './styles';
 
 const useStyles = createUseStyles(styles);
 
-const ListItem = ({ book }) => {
+const ListItem = ({ book, onSelect }) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} onClick={onSelect}>
       {book?.imageLinks?.smallThumbnail && (
         <div className={classes.imageContainer}>
           <img

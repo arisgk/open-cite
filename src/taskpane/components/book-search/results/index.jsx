@@ -1,5 +1,6 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
+import { addBookCitation } from 'shared/word';
 import Book from './book';
 import styles from './styles';
 
@@ -12,11 +13,13 @@ const SearchResults = ({ results }) => {
     return null;
   }
 
+  const handleResultClick = result => () => addBookCitation(result);
+
   return (
     <ol className={classes.list}>
       {results.map(result => (
         <li key={result.id}>
-          <Book book={result} />
+          <Book book={result} onSelect={handleResultClick(result)} />
         </li>
       ))}
     </ol>

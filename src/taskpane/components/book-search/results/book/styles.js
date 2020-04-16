@@ -3,6 +3,10 @@ export default () => ({
     display: 'flex',
     alignItems: 'center',
     marginBottom: 24,
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: 'rgba(0,0,0,0.03)',
+    },
   },
   infoItem: {
     marginTop: 0,
