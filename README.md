@@ -29,3 +29,7 @@ If you are using the web application of Microsoft Word, you will need to upload 
 
 - [Office add-in documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 - More Office Add-in samples at [OfficeDev on Github](https://github.com/officedev)
+
+## Acknowledgements
+
+OpenCite uses the excellent [Citation Style Language](https://citationstyles.org/) project to format the citations and bibliography in your preferred style and locale.

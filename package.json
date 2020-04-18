@@ -27,6 +27,7 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
+    "citeproc": "^2.2.34",
     "classnames": "^2.2.6",
     "core-js": "^3.1.4",
     "es6-promise": "^4.2.8",
